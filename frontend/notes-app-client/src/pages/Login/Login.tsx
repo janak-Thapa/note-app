@@ -37,7 +37,7 @@ const Login = () => {
 
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
-        navigate("/");
+        navigate(`${import.meta.env.BASE_URL}/`);
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
