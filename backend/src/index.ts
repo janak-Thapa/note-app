@@ -2,11 +2,11 @@ import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import connectDB from './config/db';
-import { config } from './config/config';
-import authenticateToken, { AuthenticatedRequest } from './utilities';
-import UserModel from './models/user.model';
-import NoteModel from './models/note.model';
+import connectDB from '../src/config/db';
+import { config } from '../src/config/config';
+import authenticateToken, { AuthenticatedRequest } from '../utilities';
+import UserModel from '../src/models/user.model';
+import NoteModel from '../src/models/note.model';
 
 
 const app = express();
