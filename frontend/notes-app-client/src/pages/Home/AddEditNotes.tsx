@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import TagInput from "../../components/Input/TagInput";
 import { MdClose } from "react-icons/md";
 import axiosInstance from "../../utils/axios";
-import {config} from "../../utils/constants"
+
 
 interface AddEditNotesProps {
   type: 'add' | 'edit';
@@ -21,7 +21,7 @@ const AddEditNotes: React.FC<AddEditNotesProps> = ({ noteData, type, getAllNotes
 
   const addNewNote = async () => {
     try {
-      const response = await axiosInstance.post(`${config.base_url}/addnote`, {
+      const response = await axiosInstance.post('/addnote', {
         title,
         content,
         tags,
@@ -46,7 +46,7 @@ const AddEditNotes: React.FC<AddEditNotesProps> = ({ noteData, type, getAllNotes
 
     const noteId = noteData._id;
     try {
-      const response = await axiosInstance.put(`${config.base_url}/editnote` + noteId, {
+      const response = await axiosInstance.put('/deletenote' + noteId, {
         title,
         content,
         tags,

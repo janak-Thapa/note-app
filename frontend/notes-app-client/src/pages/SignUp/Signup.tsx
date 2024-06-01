@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { validateEmail } from "../../utils/helper";
 import axiosInstance from "../../utils/axios";
 import axios, { AxiosError } from "axios";
-import {config} from "../../utils/constants"
+
 
 
 const Signup = () => {
@@ -43,7 +43,7 @@ const Signup = () => {
         }
 
         try {
-          const response = await axiosInstance.post(`${config.base_url}/register`, {
+          const response = await axiosInstance.post('/register', {
             fullName:name,
             email,
             password,
@@ -129,7 +129,7 @@ const Signup = () => {
             </button>
             <p className="text-sm text-center mt-4">
              Already have an account?{' '}
-              <Link to={`${config.base_url}/login`} className="font-medium text-primary underline">
+              <Link to={'/login'} className="font-medium text-primary underline">
                Login
               </Link>
             </p>

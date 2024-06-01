@@ -13,7 +13,7 @@ import axiosInstance from "../../utils/axios";
 import moment from "moment";
 import Toast from "../../components/ToastMessage/Toast";
 import NoData from "../../assets/images/no-notes.png"
-import {config} from "../../utils/constants"
+
 interface UserInfo {
   fullName: string;
   email: string;
@@ -54,7 +54,7 @@ const Home: React.FC = () => {
 
   const handleDelete = async (noteId: string) => {
     try {
-      await axiosInstance.delete(`${config.base_url}/deletenotes${noteId}`);
+      await axiosInstance.delete(`/deletenotes${noteId}`);
       showToastMessage("Note Deleted Successfully", "delete");
       getAllNotes();
     } catch (error) {
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
 
   const getUserInfo = async () => {
     try {
-      const response = await axiosInstance.get(`${config.base_url}/getuser`);
+      const response = await axiosInstance.get('/getuser');
       if (response.data && response.data.user) {
         setUserInfo(response.data.user as UserInfo);
       }
@@ -103,7 +103,7 @@ const Home: React.FC = () => {
 
   const getAllNotes = async () => {
     try {
-      const response = await axiosInstance.get(`${config.base_url}/getallnotes`);
+      const response = await axiosInstance.get('/getallnotes');
       if (response.data && response.data.notes) {
         const uniqueNotes = response.data.notes.filter(
           (note: Note, index: number, self: Note[]) =>
@@ -118,7 +118,7 @@ const Home: React.FC = () => {
 
   const onSearchNote = async (query: any)=>{
     try{
-      const response = await axiosInstance.get(`${config.base_url}/searchnotes`,{
+      const response = await axiosInstance.get('/searchnotes',{
         params:{query},
 
       })
@@ -140,7 +140,7 @@ const Home: React.FC = () => {
   const updateIsPinned = async (noteData: Note) =>{
     const noteId = noteData._id;
     try {
-      const response = await axiosInstance.put(`${config.base_url}/notepinned` + noteId, {
+      const response = await axiosInstance.put('/notepinned' + noteId, {
         "isPinned":!noteData.isPinned,
       });
       if (response.data && response.data.note) {
