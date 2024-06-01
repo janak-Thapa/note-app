@@ -19,7 +19,7 @@ const PORT = config.port || 3000;
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin:config.clinetUri,
+  origin:config.clientUri,
 }));
 
 // Routes
