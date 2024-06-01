@@ -10,8 +10,8 @@ const App = () => {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
+          <Route path={`${import.meta.env.BASE_URL}/login`} element={<Login />} />
+          <Route path={`${import.meta.env.BASE_URL}/register`} element={<Signup />} />
         </Routes>
       </Router>
     </div>
