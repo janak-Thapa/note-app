@@ -3,7 +3,7 @@ import axios from "axios";
 import { config } from "./constants"; // Adjust the path if necessary
 
 const axiosInstance = axios.create({
-    baseURL: config.base_url, // Accessing the base_url property directly
+    baseURL: config.base_url as string, // Accessing the base_url property directly
     timeout: 10000,
     headers: {
         "Content-Type": "application/json"
