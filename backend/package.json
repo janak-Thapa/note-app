@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node index.ts"
+    "dev": " nodemon index.ts",
+    "build":"npm-run-all --squential build:*",
+    "start":"node index.js"
   },
   "keywords": [],
   "author": "",
