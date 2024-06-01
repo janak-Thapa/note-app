@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import connectDB from '../src/config/db';
 import { config } from '../src/config/config';
-import authenticateToken, { AuthenticatedRequest } from '../utilities';
+import authenticateToken, { AuthenticatedRequest } from './utilities';
 import UserModel from '../src/models/user.model';
 import NoteModel from '../src/models/note.model';
 
