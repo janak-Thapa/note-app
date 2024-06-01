@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../../";
+import Navbar from "../../components/Navbar/Navbar";
 import PasswordInput from "../../components/Input/PasswordInput";
 import { useState } from "react";
 import { validateEmail } from "../../utils/helper";
