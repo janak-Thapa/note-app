@@ -6,6 +6,7 @@ import { useState } from "react";
 import { validateEmail } from "../../utils/helper";
 import axios, { AxiosError } from "axios"; // Import AxiosError
 import axiosInstance from "../../utils/axios";
+import {config} from "../../utils/constants"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,14 +31,14 @@ const Login = () => {
     setError(null);
 
     try {
-      const response = await axiosInstance.post(`${import.meta.env.BASE_URL}/login`, {
+      const response = await axiosInstance.post(`${config.base_url}/login`, {
         email,
         password,
       });
 
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
-        navigate(`${import.meta.env.BASE_URL}/`);
+        navigate(`${config.base_url}/`);
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
