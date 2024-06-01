@@ -7,7 +7,8 @@ import { config } from '../src/config/config';
 import authenticateToken, { AuthenticatedRequest } from './utilities';
 import UserModel from '../src/models/user.model';
 import NoteModel from '../src/models/note.model';
-
+import { config as conf } from 'dotenv';
+conf();
 
 const app = express();
 
