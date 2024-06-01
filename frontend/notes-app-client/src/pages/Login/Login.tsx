@@ -30,7 +30,7 @@ const Login = () => {
     setError(null);
 
     try {
-      const response = await axiosInstance.post('/login', {
+      const response = await axiosInstance.post(`${import.meta.env.BASE_URL}/login`, {
         email,
         password,
       });

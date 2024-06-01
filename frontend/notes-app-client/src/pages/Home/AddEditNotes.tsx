@@ -20,7 +20,7 @@ const AddEditNotes: React.FC<AddEditNotesProps> = ({ noteData, type, getAllNotes
 
   const addNewNote = async () => {
     try {
-      const response = await axiosInstance.post('/addnote', {
+      const response = await axiosInstance.post(`${import.meta.env.BASE_URL}/addnote`, {
         title,
         content,
         tags,
@@ -45,7 +45,7 @@ const AddEditNotes: React.FC<AddEditNotesProps> = ({ noteData, type, getAllNotes
 
     const noteId = noteData._id;
     try {
-      const response = await axiosInstance.put('/editnote/' + noteId, {
+      const response = await axiosInstance.put(`${import.meta.env.BASE_URL}/editnote` + noteId, {
         title,
         content,
         tags,

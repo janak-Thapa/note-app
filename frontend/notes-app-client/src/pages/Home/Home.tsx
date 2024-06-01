@@ -88,21 +88,21 @@ const Home: React.FC = () => {
 
   const getUserInfo = async () => {
     try {
-      const response = await axiosInstance.get("/getuser");
+      const response = await axiosInstance.get(`${import.meta.env.BASE_URL}/getuser`);
       if (response.data && response.data.user) {
         setUserInfo(response.data.user as UserInfo);
       }
     } catch (error: any) {
       if (error.response && error.response.status === 401) {
         localStorage.clear();
-        navigate("/login");
+        navigate(`${import.meta.env.BASE_URL}/login`);
       }
     }
   };
 
   const getAllNotes = async () => {
     try {
-      const response = await axiosInstance.get("/getallnotes");
+      const response = await axiosInstance.get(`${import.meta.env.BASE_URL}/getallnotes`);
       if (response.data && response.data.notes) {
         const uniqueNotes = response.data.notes.filter(
           (note: Note, index: number, self: Note[]) =>
@@ -117,7 +117,7 @@ const Home: React.FC = () => {
 
   const onSearchNote = async (query: any)=>{
     try{
-      const response = await axiosInstance.get("/searchnotes",{
+      const response = await axiosInstance.get(`${import.meta.env.BASE_URL}/searchnotes`,{
         params:{query},
 
       })
@@ -139,7 +139,7 @@ const Home: React.FC = () => {
   const updateIsPinned = async (noteData: Note) =>{
     const noteId = noteData._id;
     try {
-      const response = await axiosInstance.put('/notepinned/' + noteId, {
+      const response = await axiosInstance.put(`${import.meta.env.BASE_URL}/notepinned` + noteId, {
         "isPinned":!noteData.isPinned,
       });
       if (response.data && response.data.note) {

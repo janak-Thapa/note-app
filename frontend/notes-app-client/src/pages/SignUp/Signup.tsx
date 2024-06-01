@@ -42,7 +42,7 @@ const Signup = () => {
         }
 
         try {
-          const response = await axiosInstance.post('/register', {
+          const response = await axiosInstance.post(`${import.meta.env.BASE_URL}/register`, {
             fullName:name,
             email,
             password,
