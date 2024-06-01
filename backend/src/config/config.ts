@@ -3,7 +3,7 @@ conf();
 
 const _config = {
   port: process.env.PORT,
-  clientUri:process.env.CLIENT_URL,
+  clientUri:process.env.CLIENT_URL as string,
   databaseUrl: process.env.MONGO_URI,
   env: process.env.NODE_ENV,
   jwtSecret: process.env.JWT_SECRET_KEY,

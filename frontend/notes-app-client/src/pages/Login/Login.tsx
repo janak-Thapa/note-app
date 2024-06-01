@@ -17,37 +17,35 @@ const Login = () => {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
       return;
     }
-
+  
     if (!password) {
       setError("Please enter the password.");
       return;
     }
-
+  
     setError(null);
-
+  
     try {
-      const response = await axiosInstance.post('/login', {
-        email,
-        password,
-      });
-
+      const response = await axiosInstance.post('/login', { email, password });
+  
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
         navigate('/');
       }
     } catch (error) {
+      console.error("Login error: ", error); // Log the error details
       if (axios.isAxiosError(error)) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const axiosError = error as AxiosError<any>; // Specify the type as AxiosError<any>
+        const axiosError = error as AxiosError<any>;
         if (axiosError.response && axiosError.response.data && axiosError.response.data.message) {
           setError(axiosError.response.data.message);
         } else if (axiosError.message) {
-          setError(axiosError.message); // Use the error message from AxiosError
+          setError(axiosError.message);
         } else {
           setError("An unexpected error occurred. Please try again.");
         }
@@ -56,6 +54,7 @@ const Login = () => {
       }
     }
   };
+  
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
